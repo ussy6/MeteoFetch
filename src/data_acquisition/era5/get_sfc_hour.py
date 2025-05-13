@@ -2,12 +2,12 @@ import os
 import sys
 from def_hour import *
 
-site = 'Harutori'
-syr, eyr = 2000, 2025
+site = 'harutori'
+syr, eyr = 1980, 1999
 tm = 1 # restart month
 YY, MM = 1999, 3 # for single month retrieval
 
-os.makedirs(site, exist_ok=True)
+# os.makedirs(site, exist_ok=True)
 iy = syr
 for im in range(tm,13,1):
     sfc(site,iy,im)

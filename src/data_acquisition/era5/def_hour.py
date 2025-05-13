@@ -1,6 +1,8 @@
 import cdsapi
+import os
 # check pressure level (L133-) for the target domain
 latn, lats, lonw, lone = 43, 42.75, 144.25, 144.5 # for Lake Harutori
+BASE_DIR = 'data/nc' 
 
 def flx(site,iy,im):
     yr = str(iy)
@@ -43,7 +45,9 @@ def flx(site,iy,im):
         "download_format": "unarchived",
         "area": [latn, lonw, lats, lone]
     }
-    target = f'{site}/{site}{yr}{mn}h.nc'
+    target_dir = os.path.join(BASE_DIR, site, 'flx')
+    target = os.path.join(target_dir, f'{site}_{yr}{mn}_flx_h.nc')
+    os.makedirs(target_dir, exist_ok=True) 
     client = cdsapi.Client(delete = True)
     client.retrieve(dataset, request, target)
 
@@ -90,7 +94,9 @@ def sfc(site,iy,im):
         "download_format": "unarchived",
         "area": [latn, lonw, lats, lone]
     }
-    target = f'{site}/{site}{yr}{mn}h.nc'
+    target_dir = os.path.join(BASE_DIR, site, 'sfc')
+    target = os.path.join(target_dir, f'{site}_{yr}{mn}_sfc_h.nc')
+    os.makedirs(target_dir, exist_ok=True) 
     client = cdsapi.Client(delete = True)
     client.retrieve(dataset, request, target)
 
@@ -143,6 +149,8 @@ def pl(site,iy,im):
         "download_format": "unarchived",
         "area": [latn, lonw, lats, lone]
     }
-    target = f'nc/{site}/sfc/{site}_{yr}{mn}_srf_h.nc'
+    target_dir = os.path.join(BASE_DIR, site, 'pl')
+    target = os.path.join(target_dir, f'{site}_{yr}{mn}_pl_h.nc')
+    os.makedirs(target_dir, exist_ok=True) 
     client = cdsapi.Client(delete = True)
     client.retrieve(dataset, request, target)

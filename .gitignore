@@ -1,2 +1,10 @@
 # data フォルダとその中身をすべて無視
 /data/
+
+# data フォルダ内の特定のファイルを追跡したい場合は以下のように記述
+!data/.gitkeep
+
+# Pythonのバイトコンパイルされたファイルを無視
+__pycache__/
+*.py[cod]
+*$py.class
