@@ -1,0 +1,117 @@
+{
+  "# 設定ファイル": "気象データ収集・処理システム",
+  "# 作成日時": "2025-04-21 17:43:14",
+  "# 説明": "このファイルは気象庁のデータをスクレイピングして処理するための設定です",
+  "scraping": {
+    "comments": "気象データスクレイピングの設定",
+    "jma": {
+      "base_url": {
+        "daily": "https://www.data.jma.go.jp/obd/stats/etrn/view/daily_s1.php",
+        "hourly": "https://www.data.jma.go.jp/obd/stats/etrn/view/hourly_s1.php"
+      },
+      "target_period": {
+        "start_year": 2023,
+        "end_year": 2024,
+        "start_month": 1,
+        "end_month": 12,
+        "start_day": 1,
+        "end_day": 31
+      },
+      "parallel_processing": {
+        "enable": true,
+        "max_workers": 4
+      }
+    }
+  },
+  "data_paths": {
+    "raw": {
+      "daily": "data/raw/scraped/daily",
+      "hourly": "data/raw/scraped/hourly"
+    },
+    "processed": {
+      "merged": {
+        "daily": "data/processed/merged/daily",
+        "hourly": "data/processed/merged/hourly"
+      },
+      "interpolated": "data/processed/interpolated",
+      "formatted": "data/processed/formatted"
+    }
+  },
+  "data_processing": {
+    "merge": {
+      "station_ids": []
+    },
+    "interpolate": {
+      "years": [],
+      "station_ids": []
+    },
+    "format": {
+      "years": []
+    }
+  },
+  "columns": {
+    "daily_header": [
+      "年月日1",
+      "年月日2",
+      "気圧_現地_hPa",
+      "気圧_海面_hPa",
+      "日降水量_mm",
+      "日最大降水量_1h_mm",
+      "日最大降水量_10m_mm",
+      "日平均気温_dC",
+      "日最高気温_dC",
+      "日最低気温_dC",
+      "日平均湿度_per",
+      "日最小湿度_per",
+      "日平均風速_ms",
+      "日最大風速_ms",
+      "日最大風速の風向",
+      "日最大瞬間風速_ms",
+      "日最大瞬間風速の風向",
+      "日照時間_h",
+      "日降雪深_cm",
+      "日最深積雪_cm",
+      "天気概況_昼_06-18",
+      "天気概況_夜_18-06"
+    ],
+    "hourly_header": [
+      "日時1",
+      "日時2",
+      "時刻",
+      "気圧_現地_hPa",
+      "気圧_海面_hPa",
+      "降水量_mm",
+      "気温_dC",
+      "露点温度_dC",
+      "蒸気圧_hPa",
+      "湿度_per",
+      "風速_mpers",
+      "風向",
+      "日照時間_h",
+      "全天日射量_MJperm2",
+      "降雪_cm",
+      "積雪_cm",
+      "天気",
+      "雲量",
+      "視程_km"
+    ],
+    "interpolate_columns": [
+      "気圧_現地_hPa",
+      "気圧_海面_hPa",
+      "降水量_mm",
+      "気温_dC",
+      "露点温度_dC",
+      "蒸気圧_hPa",
+      "湿度_per",
+      "風速_mpers",
+      "風向",
+      "日照時間_h",
+      "全天日射量_MJperm2",
+      "降雪_cm",
+      "積雪_cm"
+    ],
+    "columns_mapping": {
+      "積雪_cm": "日最深積雪_cm"
+    }
+  }
+}
