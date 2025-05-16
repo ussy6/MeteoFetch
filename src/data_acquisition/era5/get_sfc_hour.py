@@ -3,7 +3,7 @@ import sys
 from def_hour import *
 
 site = 'harutori'
-syr, eyr = 1980, 1999
+syr, eyr = 1960, 1979
 tm = 1 # restart month
 YY, MM = 1999, 3 # for single month retrieval
 
@@ -16,8 +16,7 @@ for iy in range(syr+1,eyr+1,1):
     for im in range(1,13,1):
         sfc(site,iy,im)
 
-
-sys.exit() # stop the script
+sys.exit()
 
 # to get data for one month
 iy, im = YY, MM
